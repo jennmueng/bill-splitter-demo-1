@@ -1,0 +1,1 @@
+- always run lint and typecheck when you make changes

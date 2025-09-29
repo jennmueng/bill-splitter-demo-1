@@ -135,7 +135,7 @@ export default function BillSummary() {
                 summary.personTotals.reduce((sum, pt) => sum + pt.total, 0)
               ) > 0.01 && (
                 <div className="text-red-600 text-xs mt-1">
-                  ⚠️ Totals don't match - some items may not be assigned
+                  ⚠️ Totals don&apos;t match - some items may not be assigned
                 </div>
               )}
             </div>

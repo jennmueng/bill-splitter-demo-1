@@ -8,8 +8,13 @@ import type { Adjustment } from '@/lib/types';
 
 export default function AdjustmentsPanel() {
   const { bill, addAdjustment, updateAdjustment, deleteAdjustment, getBillSummary } = useBillStore();
-  const [newAdjustment, setNewAdjustment] = useState({
-    type: 'tip' as const,
+  const [newAdjustment, setNewAdjustment] = useState<{
+    type: 'fee' | 'tip' | 'tax';
+    description: string;
+    value: string;
+    isPercentage: boolean;
+  }>({
+    type: 'tip',
     description: '',
     value: '',
     isPercentage: true,
