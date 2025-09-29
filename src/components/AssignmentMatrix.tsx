@@ -15,7 +15,7 @@ export default function AssignmentMatrix() {
   if (bill.items.length === 0 || bill.people.length === 0) {
     return (
       <div className="bg-white rounded-lg shadow-sm border p-6">
-        <h2 className="text-xl font-semibold mb-4">Item Assignments</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Item Assignments</h2>
         <div className="text-gray-500 text-center py-8">
           {bill.items.length === 0 && bill.people.length === 0
             ? "Add items and people to start assigning."
@@ -44,7 +44,7 @@ export default function AssignmentMatrix() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
-      <h2 className="text-xl font-semibold mb-4">Item Assignments</h2>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">Item Assignments</h2>
       <p className="text-gray-600 text-sm mb-6">
         Click to assign/unassign people to items. Items are split equally among assigned people.
       </p>

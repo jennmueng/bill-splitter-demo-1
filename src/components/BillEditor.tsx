@@ -42,7 +42,7 @@ export default function BillEditor() {
             type="text"
             value={bill.name}
             onChange={(e) => updateBillName(e.target.value)}
-            className="text-2xl font-bold bg-transparent border-none outline-none focus:bg-white focus:px-2 focus:py-1 rounded transition-colors"
+            className="text-2xl font-bold text-gray-900 bg-transparent border-none outline-none focus:bg-white focus:px-2 focus:py-1 rounded transition-colors"
             placeholder="Bill Name"
           />
         </div>

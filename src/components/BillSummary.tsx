@@ -10,7 +10,7 @@ export default function BillSummary() {
   if (bill.items.length === 0 && bill.people.length === 0) {
     return (
       <div className="bg-white rounded-lg shadow-sm border p-6 sticky top-6">
-        <h2 className="text-xl font-semibold mb-4">Bill Summary</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Bill Summary</h2>
         <div className="text-gray-500 text-center py-8">
           Add items and people to see the summary
         </div>
@@ -22,7 +22,7 @@ export default function BillSummary() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6 sticky top-6">
-      <h2 className="text-xl font-semibold mb-4">Bill Summary</h2>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">Bill Summary</h2>
 
       {/* Bill Totals */}
       <div className="space-y-3 mb-6 pb-6 border-b">

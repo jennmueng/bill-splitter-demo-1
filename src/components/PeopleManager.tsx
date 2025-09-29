@@ -26,7 +26,7 @@ export default function PeopleManager() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
-      <h2 className="text-xl font-semibold mb-4">People</h2>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">People</h2>
 
       <form onSubmit={handleAddPerson} className="mb-6">
         <div className="flex gap-3">
@@ -35,7 +35,7 @@ export default function PeopleManager() {
             placeholder="Person's name"
             value={newPersonName}
             onChange={(e) => setNewPersonName(e.target.value)}
-            className="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-3 py-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <button
@@ -79,7 +79,7 @@ export default function PeopleManager() {
                         setEditingId(null);
                       }
                     }}
-                    className="px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="px-2 py-1 border rounded text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     autoFocus
                   />
                 ) : (

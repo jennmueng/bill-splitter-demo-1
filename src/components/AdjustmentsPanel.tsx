@@ -74,14 +74,14 @@ export default function AdjustmentsPanel() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
-      <h2 className="text-xl font-semibold mb-4">Fees & Adjustments</h2>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">Fees & Adjustments</h2>
 
       <form onSubmit={handleAddAdjustment} className="mb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           <select
             value={newAdjustment.type}
             onChange={(e) => setNewAdjustment({ ...newAdjustment, type: e.target.value as 'fee' | 'tip' | 'tax' })}
-            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="tip">Tip</option>
             <option value="tax">Tax</option>
@@ -93,7 +93,7 @@ export default function AdjustmentsPanel() {
             placeholder="Description"
             value={newAdjustment.description}
             onChange={(e) => setNewAdjustment({ ...newAdjustment, description: e.target.value })}
-            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
@@ -105,7 +105,7 @@ export default function AdjustmentsPanel() {
               placeholder="Amount"
               value={newAdjustment.value}
               onChange={(e) => setNewAdjustment({ ...newAdjustment, value: e.target.value })}
-              className="flex-1 px-3 py-2 border border-r-0 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 px-3 py-2 border border-r-0 rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
             <select
@@ -159,7 +159,7 @@ export default function AdjustmentsPanel() {
                   <select
                     value={adjustment.type}
                     onChange={(e) => handleUpdateAdjustment(adjustment.id, 'type', e.target.value)}
-                    className="w-full px-2 py-1 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-2 py-1 border rounded text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   >
                     <option value="tip">Tip</option>
                     <option value="tax">Tax</option>
@@ -178,7 +178,7 @@ export default function AdjustmentsPanel() {
                     type="text"
                     value={adjustment.description}
                     onChange={(e) => handleUpdateAdjustment(adjustment.id, 'description', e.target.value)}
-                    className="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-2 py-1 border rounded text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 ) : (
                   <span
@@ -199,7 +199,7 @@ export default function AdjustmentsPanel() {
                       min="0"
                       value={adjustment.value}
                       onChange={(e) => handleUpdateAdjustment(adjustment.id, 'value', e.target.value)}
-                      className="flex-1 px-2 py-1 border border-r-0 rounded-l text-right focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="flex-1 px-2 py-1 border border-r-0 rounded-l text-right text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                     <select
                       value={adjustment.isPercentage ? 'percentage' : 'fixed'}

@@ -40,16 +40,16 @@ export default function LineItemsList() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
-      <h2 className="text-xl font-semibold mb-4">Line Items</h2>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">Line Items</h2>
 
       <form onSubmit={handleAddItem} className="mb-6">
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        <div className="flex flex-col sm:grid sm:grid-cols-12 gap-3">
           <input
             type="text"
             placeholder="Item name"
             value={newItem.name}
             onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-            className="col-span-2 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="sm:col-span-5 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             required
           />
           <input
@@ -59,25 +59,23 @@ export default function LineItemsList() {
             placeholder="Price"
             value={newItem.price}
             onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="sm:col-span-3 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             required
           />
-          <div className="flex gap-2">
-            <input
-              type="number"
-              min="1"
-              placeholder="Qty"
-              value={newItem.quantity}
-              onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
-              className="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Add
-            </button>
-          </div>
+          <input
+            type="number"
+            min="1"
+            placeholder="Qty"
+            value={newItem.quantity}
+            onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
+            className="sm:col-span-2 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+          <button
+            type="submit"
+            className="sm:col-span-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
+          >
+            Add Item
+          </button>
         </div>
       </form>
 
@@ -87,23 +85,24 @@ export default function LineItemsList() {
         </div>
       ) : (
         <div className="space-y-2">
-          <div className="grid grid-cols-12 gap-3 text-sm font-medium text-gray-700 pb-2 border-b">
+          <div className="hidden sm:grid grid-cols-12 gap-3 text-sm font-medium text-gray-900 pb-2 border-b bg-gray-50 px-3 py-2 rounded-t-md">
             <div className="col-span-5">Item</div>
             <div className="col-span-2 text-right">Price</div>
             <div className="col-span-2 text-center">Qty</div>
             <div className="col-span-2 text-right">Total</div>
-            <div className="col-span-1"></div>
+            <div className="col-span-1 text-center">Actions</div>
           </div>
 
           {bill.items.map((item) => (
             <div
               key={item.id}
               className={cn(
-                "grid grid-cols-12 gap-3 items-center py-2 rounded",
-                editingId === item.id && "bg-blue-50"
+                "flex flex-col sm:grid sm:grid-cols-12 gap-3 items-start sm:items-center py-3 px-3 border rounded-md",
+                editingId === item.id ? "bg-blue-50 border-blue-200" : "bg-white border-gray-200 hover:bg-gray-50"
               )}
             >
-              <div className="col-span-5">
+              <div className="w-full sm:col-span-5">
+                <div className="sm:hidden text-xs font-medium text-gray-600 mb-1">Item Name</div>
                 {editingId === item.id ? (
                   <input
                     type="text"
@@ -111,20 +110,21 @@ export default function LineItemsList() {
                     onChange={(e) => handleUpdateItem(item.id, 'name', e.target.value)}
                     onBlur={() => setEditingId(null)}
                     onKeyDown={(e) => e.key === 'Enter' && setEditingId(null)}
-                    className="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-2 py-1 border border-gray-300 rounded text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     autoFocus
                   />
                 ) : (
                   <span
                     onClick={() => setEditingId(item.id)}
-                    className="cursor-pointer hover:text-blue-600"
+                    className="cursor-pointer hover:text-blue-600 text-gray-900 font-medium"
                   >
                     {item.name}
                   </span>
                 )}
               </div>
 
-              <div className="col-span-2 text-right">
+              <div className="w-full sm:col-span-2 sm:text-right">
+                <div className="sm:hidden text-xs font-medium text-gray-600 mb-1">Price</div>
                 {editingId === item.id ? (
                   <input
                     type="number"
@@ -134,19 +134,20 @@ export default function LineItemsList() {
                     onChange={(e) => handleUpdateItem(item.id, 'price', e.target.value)}
                     onBlur={() => setEditingId(null)}
                     onKeyDown={(e) => e.key === 'Enter' && setEditingId(null)}
-                    className="w-full px-2 py-1 border rounded text-right focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-2 py-1 border border-gray-300 rounded text-gray-900 sm:text-right focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 ) : (
                   <span
                     onClick={() => setEditingId(item.id)}
-                    className="cursor-pointer hover:text-blue-600"
+                    className="cursor-pointer hover:text-blue-600 text-gray-900"
                   >
                     {formatCurrency(item.price)}
                   </span>
                 )}
               </div>
 
-              <div className="col-span-2 text-center">
+              <div className="w-full sm:col-span-2 sm:text-center">
+                <div className="sm:hidden text-xs font-medium text-gray-600 mb-1">Quantity</div>
                 {editingId === item.id ? (
                   <input
                     type="number"
@@ -155,29 +156,32 @@ export default function LineItemsList() {
                     onChange={(e) => handleUpdateItem(item.id, 'quantity', e.target.value)}
                     onBlur={() => setEditingId(null)}
                     onKeyDown={(e) => e.key === 'Enter' && setEditingId(null)}
-                    className="w-full px-2 py-1 border rounded text-center focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-2 py-1 border border-gray-300 rounded text-gray-900 sm:text-center focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 ) : (
                   <span
                     onClick={() => setEditingId(item.id)}
-                    className="cursor-pointer hover:text-blue-600"
+                    className="cursor-pointer hover:text-blue-600 text-gray-900"
                   >
                     {item.quantity}
                   </span>
                 )}
               </div>
 
-              <div className="col-span-2 text-right font-medium">
-                {formatCurrency(item.price * item.quantity)}
+              <div className="w-full sm:col-span-2 sm:text-right">
+                <div className="sm:hidden text-xs font-medium text-gray-600 mb-1">Total</div>
+                <span className="font-semibold text-gray-900">
+                  {formatCurrency(item.price * item.quantity)}
+                </span>
               </div>
 
-              <div className="col-span-1 text-right">
+              <div className="w-full sm:col-span-1 sm:text-center">
                 <button
                   onClick={() => deleteLineItem(item.id)}
-                  className="text-red-600 hover:text-red-700 transition-colors"
+                  className="w-full sm:w-auto px-3 py-1 text-red-600 hover:text-red-700 hover:bg-red-50 rounded transition-colors text-sm font-medium"
                   title="Delete item"
                 >
-                  ×
+                  Delete
                 </button>
               </div>
             </div>
